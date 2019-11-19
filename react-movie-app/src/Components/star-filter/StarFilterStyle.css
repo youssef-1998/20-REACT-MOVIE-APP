@@ -1,4 +1,10 @@
+.star-filter{
+    
+
+}
 .nb-favoris {
     display: contents;
-    margin-left: 5px !important;
+    font-family: monospace;
+    font-size: 14px;
+    color: gray;
 }

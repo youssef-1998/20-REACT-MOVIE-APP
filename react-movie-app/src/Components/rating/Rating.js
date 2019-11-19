@@ -2,7 +2,7 @@ import React from 'react';
 import './RatingStyle.css';
 
 const Rating = props => {
-    // ☆★
+    
     let arrStars = []
     for(let i =0 ; i<5; i++){
         if(props.rating > i){

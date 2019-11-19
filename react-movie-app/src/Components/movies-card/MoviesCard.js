@@ -17,7 +17,7 @@ class MoviesCard extends React.Component {
         const {movie} = this.props;
         return (
             
-            <div className="film-card">
+            <div className="film-card shadow-lg p-3 mb-5 bg-white rounded">
                 <div className="custom-image">
                     <img src={movie.picture} />
                 </div>

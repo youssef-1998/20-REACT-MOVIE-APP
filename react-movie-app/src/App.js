@@ -4,7 +4,6 @@ import './App.css';
 import SearchBar from './Components/search/SearchBar';
 import StarFilter from './Components/star-filter/StarFilter';
 import MoviesList from './Components/movies-list/MoviesList';
-import BtnPlus from './Components/btn-plus/BtnPlus'
 
 let films = [
   {
@@ -37,20 +36,41 @@ let films = [
     date: "2003-12-01",
     rating: 5,
   },
+  {
+    picture: "https://image.tmdb.org/t/p/w500/qdfARIhgpgZOBh3vfNhWS4hmSo3.jpg",
+    title: "Frozen II",
+    date: "2019-11-20",
+    rating: 4,
+  },
 ]
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      list :films,
-      newRating: 0,
-      texte: "" ,
+      list: films,
+      newRating: 1,
     }
   }
 
   rateMovie = x => {
-    this.setState({newRating: x})
+    this.setState({ newRating: x })
+  }
+
+  searchMovie = y => {
+    this.setState({ list: this.state.list.filter(films => films.title.toLowerCase().indexOf(y.toLowerCase())!== -1) })
+    console.log(y)
+  }
+
+  add = () => {
+    let titre = prompt('Enter your titre')
+    let image = prompt('Enter your picture')
+    let year = prompt('Enter the date')
+    let star = prompt('Enter your rate')
+
+    this.setState({
+      list: this.state.list.concat({ title: titre, picture: image, date: year, rating: star })
+    })
   }
 
   render() {
@@ -59,11 +79,11 @@ class App extends React.Component {
 
       <div className="App">
         <div className="d-flex justify-content-between">
-          <SearchBar />
-          <StarFilter rating={this.state.newRating} rateIt={number => this.rateMovie(number)}/>
+          <SearchBar rummage={titre => this.searchMovie(titre)} />
+          <StarFilter rating={this.state.newRating} rateIt={number => this.rateMovie(number)} />
         </div>
         <MoviesList x={this.state.list.filter(el => el.rating >= this.state.newRating)} />
-        <BtnPlus />
+        <button className="btn-plus" onClick={this.add}>+ add movie</button>
       </div>
 
     )

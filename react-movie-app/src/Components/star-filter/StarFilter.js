@@ -7,15 +7,14 @@ class StarFilter extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-
         }
 
     }
 
     render() {
         return (
-            <div>
-                <p className="nb-favoris">Minimum rating</p>
+            <div className="star-filter">
+                <p className="nb-favoris">Minimum Rating</p>
                 <Rating rating={this.props.rating} ratingStars={stars => this.props.rateIt(stars)}/>
             </div>
         )
