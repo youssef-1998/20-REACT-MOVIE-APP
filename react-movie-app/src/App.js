@@ -50,6 +50,7 @@ class App extends React.Component {
     this.state = {
       list: films,
       newRating: 1,
+      keyword: ''
     }
   }
 
@@ -58,8 +59,10 @@ class App extends React.Component {
   }
 
   searchMovie = y => {
-    this.setState({ list: this.state.list.filter(films => films.title.toLowerCase().indexOf(y.toLowerCase())!== -1) })
-    console.log(y)
+    this.setState({ 
+      keyword: y
+     })
+    
   }
 
   add = () => {
@@ -82,7 +85,7 @@ class App extends React.Component {
           <SearchBar rummage={titre => this.searchMovie(titre)} />
           <StarFilter rating={this.state.newRating} rateIt={number => this.rateMovie(number)} />
         </div>
-        <MoviesList x={this.state.list.filter(el => el.rating >= this.state.newRating)} />
+        <MoviesList x={this.state.list.filter(el => el.rating >= this.state.newRating && el.title.toUpperCase().includes(this.state.keyword.toUpperCase().trim())) } />
         <button className="btn-plus" onClick={this.add}>+ add movie</button>
       </div>
 

@@ -9,13 +9,13 @@ class Recherchebar extends React.Component {
         }
 
     }
-    changeSearch = (e) => {
-        this.setState({
-            name: e.target.value
-        },
-            () => this.props.rummage(this.state.name)
-        )
-    }
+    // changeSearch = (e) => {
+    //     this.setState({
+    //         name: e.target.value
+    //     },
+    //         () => this.props.rummage(this.state.name)
+    //     )
+    // }
 
     render() {
         const {} = this.state;
@@ -24,7 +24,7 @@ class Recherchebar extends React.Component {
             <div className="container">
                 <div className="p-1 bg-light rounded rounded-pill shadow-sm mb-4">
                     <div className="input-group">
-                        <input onChange={this.changeSearch} type="search" placeholder="Type movie name to search" aria-describedby="button-addon1" className="form-control border-0 bg-light width" />
+                        <input onChange={e => this.props.rummage(e.target.value)} type="search" placeholder="Type movie name to search" aria-describedby="button-addon1" className="form-control border-0 bg-light width" />
                         <div className="input-group-append">
                             <button id="button-addon1" type="submit" className="btn btn-link text-primary"><i className="fa fa-search"></i></button>
                         </div>
