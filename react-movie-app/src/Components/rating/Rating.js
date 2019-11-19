@@ -1,29 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './RatingStyle.css';
 
-class Rating extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-
+const Rating = props => {
+    // ☆★
+    let arrStars = []
+    for(let i =0 ; i<5; i++){
+        if(props.rating > i){
+            arrStars.push(<span onClick={() => props.ratingStars(i+1)}>★</span>)
+        }else{
+            arrStars.push(<span onClick={() => props.ratingStars(i+1)}>☆</span>)
         }
-
     }
+    return (
 
-    render() {
-        const { } = this.state;
-        return (
+        <div className="favoris">
+            {arrStars}
+        </div>
 
-            <div className="favoris">
-                <i className="fas fa-star text-primary"></i>
-                <i className="fas fa-star text-primary"></i>
-                <i className="fas fa-star text-primary"></i>
-                <i className="fas fa-star text-primary"></i>
-                <i className="fas fa-star text-primary"></i>
-            </div>
-
-        )
-    }
+    )
 }
 
 export default Rating

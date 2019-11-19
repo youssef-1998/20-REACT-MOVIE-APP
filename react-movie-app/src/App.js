@@ -11,31 +11,31 @@ let films = [
     picture: "https://image.tmdb.org/t/p/w500/ePXuKdXZuJx8hHMNr2yM4jY2L7Z.jpg",
     title: "El Camino: A Breaking Bad Movie",
     date: "2019-10-11",
-    votes: "",
+    rating: 2,
   },
   {
     picture: "https://image.tmdb.org/t/p/w500/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg",
     title: "John Wick: Chapter 3 - Parabellum",
     date: "2019-05-15",
-    votes: "",
+    rating: 4,
   },
   {
     picture: "https://image.tmdb.org/t/p/w500/zfE0R94v1E8cuKAerbskfD3VfUt.jpg",
     title: "It Chapter Two",
     date: "2019-09-04",
-    votes: "",
+    rating: 5,
   },
   {
     picture: "https://image.tmdb.org/t/p/w500/pKKvCaL1TPTVtbI6EeliyND3api.jpg",
     title: "The Dark Knight",
     date: "2008-07-16",
-    votes: "",
+    rating: 3,
   },
   {
     picture: "https://image.tmdb.org/t/p/w500/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
     title: "The Lord of the Rings: The Return of the King",
     date: "2003-12-01",
-    votes: "",
+    rating: 5,
   },
 ]
 
@@ -43,9 +43,14 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      list :films,
+      newRating: 0,
+      texte: "" ,
     }
+  }
 
+  rateMovie = x => {
+    this.setState({newRating: x})
   }
 
   render() {
@@ -55,10 +60,9 @@ class App extends React.Component {
       <div className="App">
         <div className="d-flex justify-content-between">
           <SearchBar />
-          <StarFilter />
+          <StarFilter rating={this.state.newRating} rateIt={number => this.rateMovie(number)}/>
         </div>
-        {/* {films.map(x => <MoviesCard el={x} />)} */}
-        <MoviesList />
+        <MoviesList x={this.state.list.filter(el => el.rating >= this.state.newRating)} />
         <BtnPlus />
       </div>
 

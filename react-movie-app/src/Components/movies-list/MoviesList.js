@@ -12,12 +12,13 @@ class MoviesList extends React.Component {
 
     }
 
-    render(props) {
-        const { } = this.state;
+    render() {
+        const {x} = this.props;
         return (
 
             <div >
-                <MoviesCard />
+                {x.map(el => <MoviesCard movie={el} />)}
+                
             </div>
             
         )

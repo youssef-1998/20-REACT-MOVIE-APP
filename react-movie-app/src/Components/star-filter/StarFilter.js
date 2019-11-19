@@ -13,11 +13,10 @@ class StarFilter extends React.Component {
     }
 
     render() {
-        const { } = this.state;
         return (
             <div>
                 <p className="nb-favoris">Minimum rating</p>
-                <Rating />
+                <Rating rating={this.props.rating} ratingStars={stars => this.props.rateIt(stars)}/>
             </div>
         )
     }

@@ -13,22 +13,21 @@ class MoviesCard extends React.Component {
 
     }
 
-    render(props) {
-        const { } = this.state;
+    render() {
+        const {movie} = this.props;
         return (
-          
-          <h6>11</h6>
-            // <div className="film-card">
-            //     <div className="custom-image">
-            //         <img src={props.el.picture} />
-            //     </div>
-            //     <div className="custom-card">
-            //         <h3>{props.el.titre}</h3>
-            //         <p>{props.el.date}</p>
-            //         <p>{props.el.votes }</p>
-            //         <Rating />
-            //     </div>
-            // </div>
+            
+            <div className="film-card">
+                <div className="custom-image">
+                    <img src={movie.picture} />
+                </div>
+                <div className="custom-card">
+                    <h3>{movie.title}</h3>
+                    <p>{movie.date}</p>
+                    <p>{movie.votes }</p>
+                    <Rating rating={movie.rating}/>
+                </div>
+            </div>
             
         )
     }

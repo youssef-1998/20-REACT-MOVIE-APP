@@ -15,7 +15,8 @@ class BtnPlus extends React.Component {
         return (
 
             <div>
-                <button>+</button>
+                <button>{+window.prompt("message", "défaut")}</button>
+                
             </div>
 
         )
